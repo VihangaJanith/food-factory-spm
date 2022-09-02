@@ -10,14 +10,14 @@ function AddTable() {
 
     const [validated, setValidated] = useState(false);
 
-    const addTable = (e) => {
+    const addTable =  async(e) => {
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
         e.preventDefault();
         e.stopPropagation();
       }
     else{
-    
+    e.preventDefault();
         const newStudent = {
             name,
             description,
@@ -25,9 +25,11 @@ function AddTable() {
             image,
         }
     
-        axios.post('http://localhost:5000/table/add', newStudent).then((res)=>{
+       await axios.post('http://localhost:5000/table/add', newStudent).then((res)=>{
+           alert("Table Added")
             console.log(res.data)
-            alert("Table Added")
+            window.location.href = '/alltable'
+            
             
         })
     
@@ -37,6 +39,15 @@ function AddTable() {
 }
 
 
+const reset = () => {
+    setName('');
+    setDescription('');
+    setUsers('');
+    setImage('');
+
+
+    };
+
 
 
   return (
@@ -45,7 +56,7 @@ function AddTable() {
             <h1>Add New Table</h1>
             <hr/>
 
-            <Form noValidate validated={validated} onSubmit={(e) => addTable(e)}>
+            <Form noValidate validated={validated}onReset={reset} onSubmit={(e) => addTable(e)}> 
             <div>
                 <label  for="name">Name</label>
             <input type="text"
@@ -105,8 +116,22 @@ function AddTable() {
             </Form.Control.Feedback>
 
 </div>
-            <button style={{width:"100%"}} type="submit" className="button1" > Add Table</button>
+<div className="row">
+            <div className="col">
 
+            <button type="submit"style={{width:"525px"}} className="button1">
+                          
+                          Add Table
+                           </button>
+            </div>
+            <div className="col">
+
+                           <button type="reset"style={{width:"140px"}} className="button1">
+                          
+                        Reset
+                           </button>
+            </div>
+            </div>
 
         </Form>
 

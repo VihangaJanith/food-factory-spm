@@ -6,15 +6,16 @@ function Navbar() {
 
    <head>
     
-      <title>Responsive Navigation Menu</title>
+     
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       
    </head>
    <body>
       <nav>
-         <div class="logo">
-            Food Factory
+         <div style={{fontVariant:"small-caps"}}  class="logo">
+          
+          <i className="fas fa-hamburger"></i>  Food Factory
          </div>
          <input type="checkbox" id="click"/>
          <label for="click" class="menu-btn">

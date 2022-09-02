@@ -32,7 +32,7 @@ nav{
   justify-content: space-between;
   padding: 0 50px 0 100px;
   flex-wrap: wrap;
-  position: fixed;
+  position: relative;
 }
 nav .logo{
   color: #fff;
@@ -151,25 +151,46 @@ input[type="checkbox"]{
   overflow: hidden;
   width: 370px;
   float: left;
-  margin-top:100px;
-  
 
-  
-  /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
-
+    /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
 }
+.cardR:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+
+
+
 .cardR-header img {
   width: 400px;
   height: 270px;
   object-fit: fill;
   margin-top: -10px;
   margin-left: -10px;
-  
-  
+}
+
+.cardR-header img:hover {
+  opacity: 0.95;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+  overflow: hidden;
+  transition: transform 1s ease;
   
 }
+
+
+
+
+
+
+
+
+
 .cardR-header {
   background-color: #fff;
+  overflow: hidden;
   
 }
 .cardR-body {
