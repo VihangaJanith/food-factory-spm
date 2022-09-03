@@ -4,6 +4,9 @@ import Navbar from './components/Navbar';
 import AddTable from './components/Table Booking/AddTable';
 import TableMenu from './components/Table Booking/TableMenu';
 import BookTable from './components/Table Booking/BookTable';
+import Register from './components/User/Register';
+import Login from './components/User/login';
+import Profile from './components/User/profile';
 
 
 function App() {
@@ -17,7 +20,9 @@ function App() {
           <Route path="/addtable" element={<AddTable/>} />
           <Route path="/tablemenu" element={<TableMenu/>} />
           <Route path="/booktable/:name" element={<BookTable/>} />
-
+          <Route path="/register" element={<Register/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
       </Router>
 
