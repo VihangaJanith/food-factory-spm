@@ -5,6 +5,7 @@ import './menu.css';
 
 function TableMenu() {
     const [tables, setTables] = useState();
+    const [searchkey, setsearchkey] = useState('');
 
 
 
@@ -12,10 +13,60 @@ function TableMenu() {
            axios.get('http://localhost:5000/table/').then(res => {
                setTables(res.data)
                console.log(res.data)
+
+
+              
+
+
+               
            })
+
+
        },[])
+
+
+
+       const filterPackages = async (e) => {
+        console.log(searchkey)
+
+        const response = await axios.get(
+            'http://localhost:5000/table/'
+          );
+        const  filteredPackages = response.data.filter((tables) =>
+          tables.name.toLowerCase().includes(searchkey)
+          );
+          if (filteredPackages.length > 0) {
+            setTables(filteredPackages);
+          }
+            else{
+                alert("Search Not Found")
+            }
+
+
+    }
+   
+
+
+
+
+
   return (
-    <div>
+    <div style={{justifyContent: 'center'}}  >
+    <div  >
+
+      <div  className="container">  
+    <div  className="row">
+
+<input type="text" className="form-control col-4 mt-1"  onChange={(e) => {setsearchkey(e.target.value)} }
+                 placeholder="Search Tables"   style={{ width: "200px", borderRadius: "10px"}} />
+                <div className="col-6 col-md-4">
+                 <button className="btn btn-secondary mt-1" style={{marginLeft: "10px"}}
+                 onClick={()=>filterPackages(searchkey)}>Search</button>
+                
+                 </div>
+
+</div>
+</div>
 
 {tables && tables.map((table , index) => (
                        <div>
@@ -67,6 +118,7 @@ function TableMenu() {
 
 
 
+    </div>
     </div>
   )
 }

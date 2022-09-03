@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { Form,Button,Col,Row,InputGroup } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 function BookTable() {
 
@@ -14,9 +14,11 @@ function BookTable() {
 
     const [validated, setValidated] = useState(false);
 
+    const ref = React.useRef();
+
     const tname = useParams().name;
 
-    const addBooking = (e) => {
+    const addBooking = async(e) => {
        
         const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -24,7 +26,7 @@ function BookTable() {
     e.stopPropagation();
   }
 else{
-    
+    e.preventDefault();
         const booking = {
             name,
             tabletype:tname,
@@ -33,7 +35,7 @@ else{
             time,
         }
     
-        axios.post('http://localhost:5000/tablebooking/add', booking).then((res)=>{
+      await  axios.post('http://localhost:5000/tablebooking/add', booking).then((res)=>{
             console.log(res.data)
             alert("Booking Added")
             
@@ -45,13 +47,28 @@ else{
 }
 
 
+
+const reset = () => {
+    setName('');
+    setTabletype('');
+    setId('');
+    setDate('');
+    setTime('');
+    setPhone('');
+
+    };
+
+
   return (
     <div className="one" >
         <div className="formw" >
             <h1>Book Table</h1>
             <hr/>
 
-            <Form noValidate validated={validated} onSubmit={(e) => addBooking(e)}>
+            <Form noValidate validated={validated} onReset={reset} 
+             onSubmit={(e) => addBooking(e)}>
+          
+          <div>
             <label  for="name">Name</label>
             <input type="text"
             id="name"
@@ -63,9 +80,11 @@ else{
             <Form.Control.Feedback type="invalid">
               Please provide a valid Name
             </Form.Control.Feedback>
+</div>
 
 
 
+            <div>
  <label  for="date">Date</label>
 <input type="date"
             id="description"
@@ -77,7 +96,10 @@ else{
             <Form.Control.Feedback type="invalid">
               Please provide a valid Date
             </Form.Control.Feedback>
+</div>
 
+
+            <div>
 
 
  <label  for="time">Time</label>
@@ -94,7 +116,10 @@ else{
             </Form.Control.Feedback>
 
 
+</div>
 
+
+            <div>
 
  <label  for="Phone">Phone Number</label>
 <input type="text"
@@ -110,10 +135,25 @@ else{
               Please provide a valid Phone
             </Form.Control.Feedback>
             
-            <button type="submit"style={{width:"100%"}} className="button1">
+</div>
+<div className="row">
+            <div className="col">
+
+            <button type="submit"style={{width:"525px"}} className="button1">
                           
                           Book Table
                            </button>
+            </div>
+            <div className="col">
+
+                           <button type="reset"style={{width:"140px"}} className="button1">
+                          
+                        Reset
+                           </button>
+            </div>
+            </div>
+
+                           
 
         </Form>
 
