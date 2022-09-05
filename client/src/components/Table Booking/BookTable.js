@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Button, Form } from "react-bootstrap";
 
@@ -7,7 +7,7 @@ function BookTable() {
 
     const [name , setName] = useState('');
     const [tabletype, setTabletype] = useState('');
-    const [id, setId] = useState('');
+    const [userid, setId] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [phone, setPhone] = useState('');
@@ -17,6 +17,55 @@ function BookTable() {
     const ref = React.useRef();
 
     const tname = useParams().name;
+
+  
+    if (localStorage.getItem("token") == null){
+
+      alert("Please Login")
+      window.location.replace("/login")
+
+
+  }
+
+
+
+    
+
+
+    useEffect((e) => {
+      //Runs on every render 
+      
+      const len = localStorage.getItem("token").length
+      let result = localStorage.getItem("token").slice(1,len-1)
+      const abc = {token:result}
+      
+      
+      axios.post('http://localhost:5000/register/view', abc).then(res=>{
+         
+          
+              setId(res.data.userId)
+              console.log(res.data.userId)
+            
+          
+      }).catch((err)=>{
+          alert(err);
+      })
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const addBooking = async(e) => {
        
@@ -30,9 +79,10 @@ else{
         const booking = {
             name,
             tabletype:tname,
-            id,
+            userid,
             date,
             time,
+            phone
         }
     
       await  axios.post('http://localhost:5000/tablebooking/add', booking).then((res)=>{

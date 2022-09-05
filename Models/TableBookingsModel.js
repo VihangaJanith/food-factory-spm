@@ -11,7 +11,7 @@ const TableBookingSchema = new Schema({
         type:String,
         required:false
     },
-    id:{
+    userid:{
         type:String,
         required:false
     },

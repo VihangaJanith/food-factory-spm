@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './menu.css';
 
 function TableMenu() {
-    const [tables, setTables] = useState();
+    const [tables, setTables] = useState(); 
     const [searchkey, setsearchkey] = useState('');
 
 
@@ -13,10 +13,6 @@ function TableMenu() {
            axios.get('http://localhost:5000/table/').then(res => {
                setTables(res.data)
                console.log(res.data)
-
-
-              
-
 
                
            })
@@ -51,7 +47,7 @@ function TableMenu() {
 
 
   return (
-    <div style={{justifyContent: 'center'}}  >
+    <div    >
     <div  >
 
       <div  className="container">  
@@ -119,7 +115,9 @@ function TableMenu() {
 
 
     </div>
+    
     </div>
+
   )
 }
 

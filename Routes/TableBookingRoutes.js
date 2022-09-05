@@ -8,7 +8,7 @@ router.post("/add", async(req, res) => {
         const user = {
             name : req.body.name, 
             tabletype : req.body.tabletype,
-            id : req.body.id,
+            userid : req.body.userid,
             date : req.body.date,
             time : req.body.time,
             phone : req.body.phone
@@ -44,6 +44,24 @@ router.get("/:id", async(req, res) =>{
         res.send(err)
     }
 })
+
+router.get('/book/:userid', async(req, res) =>{
+    try{
+       
+        let booking = await Booking.find({ userid: req.params.userid })
+       
+        res.json(booking)
+
+    }catch(err){
+        res.send(err)
+    }
+})
+
+
+
+
+
+
 
 router.put("/:id", async(req, res) =>{
     try{

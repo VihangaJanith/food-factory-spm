@@ -2,10 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap';
 
+
 function AllBookings() {
     const [bookings, setBookings] = useState();
     const [searchkey, setsearchkey] = useState('');
   
+
+   
+
+    
 
 
 
@@ -60,12 +65,16 @@ function AllBookings() {
     }
 
 
+      
+
+
 
   return (
     <div  className="container">
 
     <h1>Tables Booking Details</h1>
     <div >
+   
 
     <div  className="row mb-2">
 
@@ -74,6 +83,12 @@ function AllBookings() {
                 <div className="col-6 col-md-4">
                  <button className="btn btn-secondary mt-1" style={{marginLeft: "1px"}}
                  onClick={()=>filterBookings(searchkey)}>Search</button>
+
+                 <button className="btn btn-warning mt-1" style={{marginLeft: "3px"}}
+                    onClick={()=>window.location.reload(false)}>Refresh</button>
+<a href="/bookingreport">
+<button className="btn btn-success mt-1" style={{marginLeft: "3px"}} 
+                    >Generate Report</button></a>
                 
                  </div>
                  
@@ -84,7 +99,7 @@ function AllBookings() {
     </div>
 
 
-    <Table striped bordered hover >
+    <Table  striped bordered hover >
                 <thead>
                     <tr>
                         <th>#</th>
@@ -129,6 +144,13 @@ function AllBookings() {
                 </tbody>
 
             </Table>
+
+
+
+
+
+           
+            
 
 
         

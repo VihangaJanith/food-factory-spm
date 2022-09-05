@@ -42,6 +42,8 @@ import {  useEffect } from "react";
                 setName(res.data.name)
                 setEmail(res.data.email)
                 setMobile(res.data.mobile) 
+                
+                console.log(res.data)
             
         }).catch((err)=>{
             alert(err);
