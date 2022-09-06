@@ -18,6 +18,7 @@ import AddFood from './components/FoodOrder/AddFood';
 import OrderFood from './components/FoodOrder/OrderFood';
 import AllOrders from './components/FoodOrder/AllOrders';
 import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
+import EditFood from './components/FoodOrder/EditFood';
 
 
 function App() {
@@ -54,6 +55,9 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
+          <Route path="/food/edit/:id" element={<EditFood/>} />
+         
+
           
 
         </Routes>
