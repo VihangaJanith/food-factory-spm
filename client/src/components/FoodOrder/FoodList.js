@@ -114,7 +114,7 @@ export default class FoodList extends Component {
                           <div class="card-text cardf-text" >
 
                           <div class=" lower">
-                       <div class=" text-right" style={{marginRight:"20px"}} ><h4>Rs. {food.price}</h4></div>
+                       <div class="text-end" style={{marginRight:"20px"}} ><h4>Rs. {food.price}</h4></div>
                    </div>
       
       

@@ -122,14 +122,14 @@ const onclickminus = ()=>{
                    </div>
                    <div class="row lower mt-2">
                        <div class="col text-lefta">Price :- Rs. {price}</div>
-                       <div class="col text-lefta">Quantity :- <button class="fa fa-minus ml-3 mr-2" style={{border:"0px" , background:"white"}} onClick={onclickminus}>  </button> <input value={quantity} style={{width:"30px",textAlign:"center"}} disabled/> <button class="fa fa-plus ml-2" style={{border:"0px" , background:"white"}} onClick={onclickplus}> </button></div>
+                       <div class="col text-lefta">Quantity :- <button class="fa fa-minus ms-3 me-2" style={{border:"0px" , background:"white"}} onClick={onclickminus}>  </button> <input value={quantity} style={{width:"30px",textAlign:"center"}} disabled/> <button class="fa fa-plus ms-2" style={{border:"0px" , background:"white"}} onClick={onclickplus}> </button></div>
                    </div>
                    
                    
                    <hr/>
                    <div class="row lower">
                        <div class="col text-lefta"><b>Total Amount</b></div>
-                       <div class="col text-righta ml-5"><b className="ml-5" style={{fontSize:"20px"}}> Rs. {price*quantity}   </b></div>
+                       <div class="col text-righta ms-5"><b className="ms-5" style={{fontSize:"20px"}}> Rs. {price*quantity}   </b></div>
                    </div>
                    <br/> 
                    <h6 class="text-muted text-center">Apply Terms and Condition</h6>
@@ -161,11 +161,11 @@ const onclickminus = ()=>{
 </div></div>
 
 <div class="col" >
-<div class="input-group mb-3" style={{width:"140px"}} >
+<div class="input-group mb-3" style={{width:"160px"}} >
  <div class="input-group-prepend">
    <span class="input-group-text" id="basic-addon1" style={{backgroundColor:'hsl(0,0%,0%,0.3)',color:"white"}}>Quantity</span>
  </div>
- <input type="text" className="form-control" name="quantity" value={quantity} onChange={onInputChange} disabled   />
+ <input type="text" className="form-control" style={{textAlign:"center"}} name="quantity" value={quantity} onChange={onInputChange} disabled   />
 </div></div>
 
 <div class="col">
@@ -184,7 +184,7 @@ const onclickminus = ()=>{
 
 <div class="d-flex flex-row align-items-center mb-4">
              
-          <label class="form-label fw-bold" style={{width:"300px"}} ><i class="fas fa-plane mr-2"></i> Your Name &nbsp; </label>  
+          <label class="form-label fw-bold" style={{width:"300px"}} ><i class="fas fa-plane me-2"></i> Your Name &nbsp; </label>  
                <div class="form-outline mb-2 col-9">
                   <input 
                    type="text"
@@ -205,7 +205,7 @@ const onclickminus = ()=>{
 
            <div class="d-flex flex-row align-items-center mb-4">
         
-          <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane mr-2"></i>Your Address</label>  
+          <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane me-2"></i>Your Address</label>  
                <div class="form-outline mb-2 col-9">
                   <input 
                    type="text"
@@ -224,7 +224,7 @@ const onclickminus = ()=>{
 
            <div class="d-flex flex-row align-items-center mb-4">
         
-          <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane mr-2"></i>Mobile Number</label>  
+          <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane me-2"></i>Mobile Number</label>  
                <div class="form-outline mb-2 col-9">
                 
                   <input 
@@ -246,10 +246,11 @@ const onclickminus = ()=>{
            </div>
 
 
-
+           <div class="d-grid gap-2">
+  <button type="submit"  class="btn btn-danger" >Order Now</button>
+</div>
      
 
-           <button type="submit" class="btn btn-danger btn-lg btn-block" style={{height:"43px"}}><b>Order Now</b></button>
          </Form>
 
                </div>
