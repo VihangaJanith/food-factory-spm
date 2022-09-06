@@ -103,7 +103,7 @@ const onMouseLeave= (e)=> {
          <i class="fas fa-bars"></i>
          </label>
          <ul>
-            <li><a href="#" >Menu</a></li>
+            <li><a href="/" >Menu</a></li>
             <li><a href={"/tablemenu"} >Table Booking</a></li>
             <li><a href="#">Inquiry</a></li>
 

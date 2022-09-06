@@ -13,6 +13,11 @@ import EditTable from './components/Table Booking/EditTable';
 import MyBookings from './components/Table Booking/MyBookings'
 import BookingReport from './components/Table Booking/BookingReport';
 import Footer from './components/Footer';
+import FoodMenu from './components/FoodOrder/FoodList';
+import AddFood from './components/FoodOrder/AddFood';
+import OrderFood from './components/FoodOrder/OrderFood';
+import AllOrders from './components/FoodOrder/AllOrders';
+import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
 
 
 function App() {
@@ -44,6 +49,11 @@ console.log(window.location.pathname)
           <Route path="/edittable/:id" element={<EditTable/>} />
           <Route path="/mybookings" element={<MyBookings/>} />
           <Route path="/bookingreport" element={<BookingReport/>} />
+          <Route path="/" element={<FoodMenu/>} />
+          <Route path="/food/order/:id" element={<OrderFood/>} />
+          <Route path="/food/add" element={<AddFood/>} />
+          <Route path="/food/allorders" element={<AllOrders/>} />
+          <Route path="/food/allfood" element={<AllFoodAdmin/>} />
           
 
         </Routes>
