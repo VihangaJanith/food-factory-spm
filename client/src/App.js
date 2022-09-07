@@ -20,6 +20,9 @@ import AllOrders from './components/FoodOrder/AllOrders';
 import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
 
 
+import Posts from './components/Table Booking/ex.js';
+
+
 function App() {
 
 
@@ -54,12 +57,15 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
+
+
+          <Route path="/posts" element={<Posts/>} />
           
 
         </Routes>
       </Router>
 
-      {window.location.pathname === "/tablemenu" ?  null : <Footer/>}
+      {window.location.pathname === "/tablemenu" || window.location.pathname === "/posts"?  null : <Footer/>}
 
     
 

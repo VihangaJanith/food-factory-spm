@@ -94,9 +94,11 @@ const onMouseLeave= (e)=> {
    </head>
    <body>
       <nav>
-         <div style={{fontVariant:"small-caps"}}  class="logo">
+         <div   class="logo">
           
-          <i className="fas fa-hamburger"></i>  Food Factory
+          <span style={{ fontSize:"70px"}} className="fas fa-hamburger"   ></span> 
+          <a  href="/" style={{fontVariant:"small-caps", fontSize:"60px", textDecoration:"none",color:"white"}
+         } >Food Factory</a> 
          </div>
          <input type="checkbox" id="click"/>
          <label for="click" class="menu-btn">

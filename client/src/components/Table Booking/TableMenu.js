@@ -7,15 +7,26 @@ function TableMenu() {
     const [tables, setTables] = useState(); 
     const [searchkey, setsearchkey] = useState('');
 
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [notab, setNotab] = useState(false);
+
+
+  
+
 
 
     useEffect (() => {
+      setIsLoading(true);
            axios.get('http://localhost:5000/table/').then(res => {
+
                setTables(res.data)
                console.log(res.data)
 
                
            })
+
+           setIsLoading(false)
 
 
        },[])
@@ -23,6 +34,7 @@ function TableMenu() {
 
 
        const filterPackages = async (e) => {
+        setIsLoading(true);
         console.log(searchkey)
 
         const response = await axios.get(
@@ -33,14 +45,43 @@ function TableMenu() {
           );
           if (filteredPackages.length > 0) {
             setTables(filteredPackages);
+            setIsLoading(false)
           }
             else{
-                alert("Search Not Found")
+              setIsLoading(true)
+              setTimeout(() => {
+                setIsLoading(false);
+              }, 300);
+              
+              setNotab(true)
+              setTimeout(() => {
+                setNotab(false);
+              }, 3000)
+              
+              
+            
+            
             }
 
 
     }
    
+
+   const reset = () => {
+    setIsLoading(true);
+    setsearchkey('');
+    
+
+    axios.get('http://localhost:5000/table/').then(res => {
+               setTables(res.data)
+               console.log(res.data)
+
+               
+           })
+           setIsLoading(false)
+           setNotab(false);
+ 
+   }
 
 
 
@@ -49,21 +90,45 @@ function TableMenu() {
   return (
     <div    >
     <div  >
+      <div style={{
+                      backgroundColor: "rgb(255, 167, 84)",
+                      paddingBottom: "15px",
+                      paddingTop: "15px",
+                      
+                    }}  >
 
-      <div  className="container">  
-    <div  className="row">
+      <div   className="container" >  
+    <div  className="row"    >
 
-<input type="text" className="form-control col-4 mt-1"  onChange={(e) => {setsearchkey(e.target.value)} }
-                 placeholder="Search Tables"   style={{ width: "200px", borderRadius: "10px"}} />
-                <div className="col-6 col-md-4">
-                 <button className="btn btn-secondary mt-1" style={{marginLeft: "10px"}}
+<input type="text" className="form-control col-4 mt-1" value={searchkey}  onChange={(e) => {setsearchkey(e.target.value)} }
+                 placeholder="Search Tables"   style={{ width: "200px", borderRadius: "10px" , backgroundColor: "rgb(255, 167, 84)" , color: "white" , borderColor: "white"}}/>
+                <div  className="col-6 col-md-4">
+                 <button className="btn btn-secondary mt-1" 
                  onClick={()=>filterPackages(searchkey)}>Search</button>
+                 <button className="btn btn-danger mt-1 " style={{marginLeft:"05px"}} 
+                 onClick={reset}>x</button>
+              
                 
                  </div>
 
 </div>
 </div>
+</div>
 
+{notab && <div className="alert alert-danger alert-dismissible fade show" role="alert">
+  Table Not Found,  Please Try Again !
+          
+          </div> }
+
+
+{isLoading ? (
+        <div style={{marginTop: "200px" }} className="d-flex justify-content-center">
+        <div  className="spinner-border text-warning"  style={{width: "3rem", height: "3rem" }}role="status">
+          <span className="sr-only">Loading...</span>
+          </div>
+          </div>
+        ) : (
+          <div>
 {tables && tables.map((table , index) => (
                        <div>
 
@@ -104,6 +169,15 @@ function TableMenu() {
                        </div>
 
                     ))}
+
+            </div>
+            )}
+
+
+
+
+
+
 
 
 
