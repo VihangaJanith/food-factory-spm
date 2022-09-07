@@ -19,6 +19,7 @@ import OrderFood from './components/FoodOrder/OrderFood';
 import AllOrders from './components/FoodOrder/AllOrders';
 import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
 import EditFood from './components/FoodOrder/EditFood';
+import MyFoodOrders from './components/FoodOrder/MyFoodOrders';
 
 
 import Posts from './components/Table Booking/ex.js';
@@ -61,8 +62,9 @@ console.log(window.location.pathname)
 
 
           <Route path="/posts" element={<Posts/>} />
-=======
+
           <Route path="/food/edit/:id" element={<EditFood/>} />
+          <Route path= '/myorders' element={<MyFoodOrders/>} />
          
 
           

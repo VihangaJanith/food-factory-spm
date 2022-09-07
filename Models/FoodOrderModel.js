@@ -31,6 +31,10 @@ const foodOrderSchema = new mongoose.Schema ({
     orderedDate:{
         type:Date,
         default:Date.now
+    },
+    userid:{
+        type:String,
+        required:false
     }
 });
 
