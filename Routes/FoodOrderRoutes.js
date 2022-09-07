@@ -10,6 +10,7 @@ router.post('/add', (req,res)=>{
         foodname:req.body.foodname,
         quantity:req.body.quantity,
         total:req.body.total,
+        userid:req.body.userid
     });
     newFoodOrder
     .save()
@@ -71,6 +72,27 @@ router.delete('/admin/delete/:id',(req,res)=>{
         });
     });
 });
+
+
+
+router.get('/book/:userid', async(req, res) =>{
+    try{
+       
+        let booking = await FoodOrder.find({ userid: req.params.userid })
+       
+        res.json(booking)
+
+    }catch(err){
+        res.send(err)
+    }
+})
+
+
+
+
+
+
+
 
 
 module.exports=router;

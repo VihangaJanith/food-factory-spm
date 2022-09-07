@@ -2,6 +2,7 @@ import React , {useState}from 'react'
 import axios from 'axios'
 import { Form } from "react-bootstrap";
 import {  useEffect } from "react";
+import {Link } from "react-router-dom";
 
  function Profile() {
 
@@ -101,10 +102,11 @@ import {  useEffect } from "react";
             </div>
 
 
-
-
+            <Link className="link-register" to={"/edit"}>
             <button style={{width:"100%"}} type="submit" class=" btn btn-danger btn-lg btn-block" >Edit Details</button>
-
+            </Link>
+          
+   
 
         </Form>
 

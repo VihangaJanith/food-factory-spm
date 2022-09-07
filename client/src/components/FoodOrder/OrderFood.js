@@ -40,7 +40,7 @@ const Restration = (props)=>{
     phone: "",
     foodname:"",
     quantity:1,
-    total:''
+    total:'',
   });
 
   const { name,address,phone,foodname,quantity,total} = foodOrder;
@@ -59,7 +59,15 @@ const Restration = (props)=>{
     else{
     e.preventDefault();
     await axios.post("http://localhost:5000/foodorder/add", foodOrder)
-    .then(setShow(true))
+    .then((res) => {
+      setShow(true);
+      setTimeout(() =>{
+        setShow(false);
+      window.location.href = "/";
+      }, 3000)
+     
+    });
+    
     
     }
     setValidated(true);
