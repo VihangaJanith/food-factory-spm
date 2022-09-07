@@ -19,11 +19,18 @@ function Register() {
            
         }
 })
+
+
  
     const [validated, setValidated] = useState(false);
 
-    const reg = (e) => {
+    const reg =  async(e) => {
         const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    else{
 
         e.preventDefault();
     
@@ -55,9 +62,11 @@ function Register() {
         }).catch((err)=>{
             alert(err);
         })
+    
+   
     }
-
-
+    setValidated(true);
+    }
 
   return (
     <div className="one">
@@ -65,7 +74,7 @@ function Register() {
             <h1>Sign Up</h1>
             <hr/>
 
-            <form onSubmit={(e) => reg(e)}>
+            <Form noValidate validated={validated} onSubmit={(e) => reg(e)}>
             <div>
                 <label  for="name">Name</label>
             <input type="text"
@@ -92,7 +101,7 @@ function Register() {
             onChange={(e)=> setEmail(e.target.value)}
             required />
             <Form.Control.Feedback type="invalid"className=" mb-2">
-              Please provide a description
+              Please provide a Email
             </Form.Control.Feedback>
 </div>
 
@@ -106,7 +115,7 @@ function Register() {
             onChange={(e)=> setMobile(e.target.value)} 
             required />
             <Form.Control.Feedback type="invalid" className=" mb-2">
-              Please provide user count
+              Please provide Mobile No
             </Form.Control.Feedback>
 </div>
 
@@ -121,7 +130,7 @@ function Register() {
             onChange={(e)=> setPassword(e.target.value)}
             required />
             <Form.Control.Feedback type="invalid"className=" mb-2">
-              Please provide an image
+              Please provide Password
             </Form.Control.Feedback>
 
 </div>
@@ -135,13 +144,15 @@ function Register() {
             value={confirmPass} 
             onChange={(e)=> setConfirmPass(e.target.value)}
             required />
-            
+             <Form.Control.Feedback type="invalid"className=" mb-2">
+              Please Confirm Password
+            </Form.Control.Feedback>
 
 </div>
             <button style={{width:"100%"}} type="submit" class=" btn btn-danger btn-lg btn-block" >Sign Up</button>
 
 
-        </form>
+        </Form>
 
         </div>
 

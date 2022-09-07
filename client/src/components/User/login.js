@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Form } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';  
 import {  useEffect } from "react";
-
+import {Link } from "react-router-dom";
  function Login() {
     
     const [mobile, setMobile] = useState('');
@@ -54,9 +54,14 @@ import {  useEffect } from "react";
   return (
     <div className="one">
         <div className="formw">
+           
+            <Link className="link-register" to={"/register"}>
+            <h7 style={{width:"15%" ,height:"9%",float: "right" ,color:"red"}}   >Register</h7>
+            </Link>
             <h1> Login</h1>
+            
             <hr/>
-    
+           
             <Form onSubmit={(e) => log(e)}>
             <div>
                 <label  for="name">Mobile Number</label>
