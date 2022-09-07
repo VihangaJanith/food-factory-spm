@@ -22,6 +22,7 @@ import EditFood from './components/FoodOrder/EditFood';
 
 
 import Posts from './components/Table Booking/ex.js';
+import Edit from './components/User/update';
 
 
 function App() {
@@ -58,7 +59,7 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
-
+          <Route path="/edit" element={<Edit/>} />
 
           <Route path="/posts" element={<Posts/>} />
 =======
