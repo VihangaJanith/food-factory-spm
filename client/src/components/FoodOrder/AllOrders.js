@@ -50,7 +50,7 @@ class ComponentToPrint extends React.Component {
 
     return (
       <div>
-
+ 
         <div
           className=""
           style={{
@@ -82,9 +82,9 @@ class ComponentToPrint extends React.Component {
                     <button
                       type="button"
                       class="btn btn-danger"
-                      style={{ marginInlineStart: "430%" }}
+                      style={{ marginInlineStart: "380%",width:"180px" }}
                     >
-                      <i class="fas fa-print mr-2"></i>Print this out!
+                      <i class="fas fa-print me-2"></i>Print this out!
                     </button>
                   )}
                   content={() => this.componentRef}
@@ -98,10 +98,10 @@ class ComponentToPrint extends React.Component {
                 style={{ marginInlineEnd: "10px", marginInlineStart: "10px" }}
               >
                 <table
-                  class="table"
-                  style={{ backgroundColor: "hsla(90, 0%,93%, 0.9)"}}
+                  class="table table-bordered border-light "
+                  style={{ backgroundColor: "hsla(90, 0%,90%, 0.9)"}}
                 >
-                  <thead class="thead-dark">
+                  <thead class="table-dark">
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Customer</th>
@@ -130,6 +130,10 @@ class ComponentToPrint extends React.Component {
                         {posts.cmp == true ? <text>Completed</text>: null }
                         {posts.cmp == false ? <text>Not Completed</text>: null }
                 </button>
+
+                {/* <button onClick={()=>this.onDelete(posts._id)}className="btn btn-success">
+                        delete
+                </button> */}
                     
                         
                         </td>

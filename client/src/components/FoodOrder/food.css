@@ -123,6 +123,29 @@
       background-position-y: center
   }
   
+
+
+
+  /*Add Food*/
+
+  .addfood {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #4f7fce;
+    color: #fff;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.addfood:hover {
+    text-decoration: none;
+    background-color: #234c8f;
+    color: #fff;
+
+}
+
   
   
   

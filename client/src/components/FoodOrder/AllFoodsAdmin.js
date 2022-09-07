@@ -61,28 +61,30 @@ export default class AllFoodAdmin extends Component {
         <div >
 
 
-<div     
+              <div     
               style={{
                 
                 backgroundColor: "hsla(101, 27%, 53%, 0.27)",
-                paddingBottom: "5px",
-                paddingTop: "7px",
+                paddingBottom: "10px",
+                paddingTop: "10px",
                 
               }}
+              
             >
+            
               <button
-              style={{marginLeft:"30px"}}
+              style={{marginLeft:"50px",marginTop:"15px"}}
                     id="search-button"
                     type="button"
                     class="btn btn-primary"
                   >
-                    <i class="fas fa-search"></i><a style={{textDecoration:"none",color:"white"}} href="/food/addfood">Add New Food</a>
+                    <i class="fas fa-search"></i><a style={{textDecoration:"none",color:"white"}} href="/food/add">Add New Food</a>
                   </button>
-           <div  style={{float:"right",marginRight:"20px"}}>
+           <div  style={{float:"right",marginRight:"20px",marginTop:"15px"}}>
                     <input
                       id="search-input"
                       type="search"
-                      style={{width:"400px"}}
+                      style={{width:"400px",padding:"10px"}}
                       placeholder="Search Food"
                       onChange={this.handleSearchArea}
                     />
@@ -90,21 +92,27 @@ export default class AllFoodAdmin extends Component {
                   <button
                     id="search-button"
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary pt-2 pb-3"
                   >
                     <i class="fas fa-search"></i>
                   </button>
                   </div>
+                  <div class="form-outline mb-2 ">
+                <h2 style={{ marginInlineStart: "38%" ,marginTop:"5px"}}>
+                  
+                  <b>All Food Items</b>
+                </h2>
+              </div>
             </div>
            
 
 
-            
-           <br/> <br/>
+      
  
-
-<table class="table">
-  <thead>
+<div style={{ marginInlineEnd: "10px", marginInlineStart: "10px" }}>
+<table class="table table-bordered border-dark "
+                  style={{ backgroundColor: "hsla(90, 0%,90%, 0.9)"}}>
+  <thead class="table-dark">
     <tr>
       <th scope="col">Food ID</th>
       <th scope="col">Name</th>
@@ -116,17 +124,18 @@ export default class AllFoodAdmin extends Component {
   <tbody>
   {this.state.foods.map((food, idx) => (
     <tr>
-      <td>Ch_0{idx + 1}</td>
-      <td>{food.foodName}</td>
-      <td>{food.description}</td>
-      <td>{food.price}</td>
-      <td><button><a href={`/food/editfood/${food._id}`}>Edit</a></button>
-      <button onClick={()=>this.onDelete(food._id)}>Delete</button></td>
+      <td style={{width:"10%"}}>Food_0{idx + 1}</td>
+      <td style={{width:"15%"}}>{food.foodName}</td>
+      <td style={{width:"50%"}}>{food.description}</td>
+      <td style={{width:"10%"}}>Rs. {food.price}</td>
+      <td style={{width:"15%"}}><button className="btn btn-warning ms-3 me-3"><a style={{textDecoration:"none",color:"black"}} href={`/food/edit/${food._id}`}>Edit</a></button>
+      <button className="btn btn-danger ms-2 " onClick={()=>this.onDelete(food._id)}>Delete</button></td>
   
     </tr>
   ))}
   </tbody>
 </table>
+</div>
 
 
 

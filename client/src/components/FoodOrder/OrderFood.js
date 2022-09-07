@@ -2,12 +2,14 @@ import React,{useState,useEffect} from "react"
 import axios from "axios";
 import { Form } from "react-bootstrap";
 import {useParams } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 //import Select from "react-select";
 import './food.css'
-
 const Restration = (props)=>{
 
     const [validated, setValidated] = useState(false);
+    const [show, setShow] = useState(false);
 
     
     const [description, setDescription] = useState("");
@@ -15,6 +17,7 @@ const Restration = (props)=>{
     // const [quantity1, setQuantity] = useState(1);
     const [foodImage, setFoodimage] = useState("");
 
+   
 // const optionList = [
 //   {  value: "Bicycle", label: "Bicycle" },
 //   {  value: "Car", label: "Car" },
@@ -55,9 +58,9 @@ const Restration = (props)=>{
     
     else{
     e.preventDefault();
-    await axios.post("http://localhost:5000/foodorder/add", foodOrder);
-    alert("Your Order Successfully Completed")
-    window.location.replace("/");
+    await axios.post("http://localhost:5000/foodorder/add", foodOrder)
+    .then(setShow(true))
+    
     }
     setValidated(true);
   };
@@ -92,13 +95,30 @@ const onclickminus = ()=>{
   addfoodOrder({...foodOrder,quantity:quantity-1,total:(price*(quantity-1))})
 }
 
+const returnhome = ()=>{
+  window.location.replace("/")
+}
 
 
     return (
-      <div >
+      <div style={{minHeight:"300px"}}>
+<Alert style={{marginTop:"20px",marginLeft:"40px",marginRight:"40px"}} show={show} variant="success" aid="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        
+        <Alert.Heading>Hey {name} !!!  Your order has been successfully completed!</Alert.Heading>
+        <p>
+        <br/>
 
+You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><br/> Thank You
+        </p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button type="submit" onClick={returnhome} variant="outline-success">
+            Close
+          </Button>
+        </div>
+      </Alert>
     
-    <div className="" >
+    <div className="" hidden={show}>
 
 <div class="card-sl" style={{backgroundColor:"hsl(0,0%,75%,0.5)",paddingTop:"20px",paddingBottom:"20px",paddingInlineStart:"50px",paddingInlineEnd:"50px"}}>    
   <div class="card-body" >
