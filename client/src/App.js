@@ -23,6 +23,15 @@ import EditFood from './components/FoodOrder/EditFood';
 
 import Posts from './components/Table Booking/ex.js';
 
+import AddInquiry from './components/Inquiry/AddInquiry';
+import AllInquiry from './components/Inquiry/AllInquiry';
+import EditInquiry from './components/Inquiry/EditInquiry';
+import AllInquiryUser from './components/Inquiry/AllInquiryUser';
+import AddReply from './components/Inquiry/AddReply';
+import AdminAllReply from './components/Inquiry/AdminAllReply'
+import EditReply from './components/Inquiry/EditReply';
+import InquiryReport from './components/Inquiry/InquiryReport';
+
 
 function App() {
 
@@ -64,6 +73,14 @@ console.log(window.location.pathname)
 =======
           <Route path="/food/edit/:id" element={<EditFood/>} />
          
+          <Route path="/addinquiry" element={<AddInquiry/>} />
+          <Route path="/allinquiry" element={<AllInquiry/>} />
+          <Route path="/allinquiryuser" element={<AllInquiryUser/>} />
+          <Route path="/editinquiry/:id" element={<EditInquiry/>} />
+          <Route path="/addreply/:id" element={<AddReply/>} />
+          <Route path="/adminallreply" element={<AdminAllReply/>} />
+          <Route path="/editreply/:id" element={<EditReply/>} />
+          <Route path="/inquiryreport" element={<InquiryReport/>} />
 
           
 

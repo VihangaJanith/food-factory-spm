@@ -107,7 +107,7 @@ const onMouseLeave= (e)=> {
          <ul>
             <li><a href="/" >Menu</a></li>
             <li><a href={"/tablemenu"} >Table Booking</a></li>
-            <li><a href="#">Inquiry</a></li>
+            <li><a href="/addinquiry">Inquiry</a></li>
 
 {localStorage.getItem("token") == null ? <li><a href="/login">Login</a></li> : 
 
