@@ -137,7 +137,7 @@ const onMouseLeave= (e)=> {
   <button class="dropbtn">{name}</button>
   <div class="dropdown-content">
   <a href="/profile">Profile</a>
-  <a href="#">My Food Orders</a>
+  <a href="/myorders">My Food Orders</a>
   <a href="/mybookings">My Table Bookings</a>
   
   <a href="#" onClick={logout}>Logout</a>

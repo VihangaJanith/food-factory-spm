@@ -8,46 +8,82 @@ import Button from 'react-bootstrap/Button';
 import './food.css'
 const Restration = (props)=>{
 
+   const { id } = useParams();
+
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
-
-    
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
-    // const [quantity1, setQuantity] = useState(1);
     const [foodImage, setFoodimage] = useState("");
 
-   
-// const optionList = [
-//   {  value: "Bicycle", label: "Bicycle" },
-//   {  value: "Car", label: "Car" },
-//   {  value: "Van", label: "Van" },
-//   {  value: "Bus", label: "Bus" },
-//   {  value: "Lorry", label: "Lorry" },
-//   {  value: "Treeweel", label: "Treeweel" },
-//   {  value: "Truck", label: "Truck" },
-//   {  value: "Tracter", label: "Tracter" }
-// ];
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [foodname, setFoodname] = useState("");
+    const [quantity, setQuantity] = useState(1);
+    const [total, setTotal] = useState("");
+    
+    const [userid, setUserid] = useState("");
 
-// function handleSelect(data) {
-//   addfoodOrder({ ...foodOrder, ["model"]: data.value });
-  
-// } 
 
-  const [foodOrder, addfoodOrder] = useState({
-    name: "",
-    address: "",
-    phone: "",
-    foodname:"",
-    quantity:1,
-    total:'',
-  });
+  // const [foodOrder, addfoodOrder] = useState({
+  //   name: "",
+  //   address: "",
+  //   phone: "",
+  //   foodname:"",
+  //   quantity:1,
+  //   total:'',
+  //   userid:''
+  // });
 
-  const { name,address,phone,foodname,quantity,total} = foodOrder;
+   if (localStorage.getItem("token") == null) {
+    alert("Please Login");
+    window.location.replace("/login");
+  }
 
-  const onInputChange = (e) => {
-    addfoodOrder({ ...foodOrder, [e.target.name]: e.target.value });
-  };
+  useEffect( (e) => {
+    //Runs on every render
+
+    const len = localStorage.getItem("token").length;
+    let result = localStorage.getItem("token").slice(1, len - 1);
+    const abc = { token: result };
+
+    axios
+      .post("http://localhost:5000/register/view", abc)
+      .then(res => [
+        setUserid(res.data.userId)
+        
+  ])
+      .catch((err) => {
+        alert(err);
+      });
+
+
+
+      axios.get(`http://localhost:5000/food/${id}`).then(res => [
+        
+        setFoodname(res.data.food.foodName),
+        setQuantity(1),
+        setTotal(res.data.food.price),
+        setDescription(res.data.food.description),
+        setPrice(res.data.food.price),
+        setFoodimage(res.data.food.foodImage)
+  ])
+  .catch((error) => console.log(error));
+
+
+
+
+
+  },[]);
+
+ 
+
+  // const { name,address,phone,foodname,quantity,total,userid} = foodOrder;
+
+  // const onInputChange = (e) => {
+  //   addfoodOrder({ ...foodOrder, [e.target.name]: e.target.value });
+  // };
 
   const onSubmit = async (e) => {
     const form = e.currentTarget;
@@ -58,13 +94,24 @@ const Restration = (props)=>{
     
     else{
     e.preventDefault();
+
+    const foodOrder = {
+      name,
+      address,
+      phone,
+      foodname,
+      quantity,
+      total,
+      userid
+    };
+
     await axios.post("http://localhost:5000/foodorder/add", foodOrder)
     .then((res) => {
       setShow(true);
       setTimeout(() =>{
         setShow(false);
       window.location.href = "/";
-      }, 3000)
+      }, 4000)
      
     });
     
@@ -73,34 +120,28 @@ const Restration = (props)=>{
     setValidated(true);
   };
 
-  const { id } = useParams();
-  useEffect (() => {
-    axios.get(`http://localhost:5000/food/${id}`).then(res => [
-        
-        addfoodOrder({
-          foodname:res.data.food.foodName,
-          quantity:1,
-          total:res.data.food.price
-        }),
-        setDescription(res.data.food.description),
-        setPrice(res.data.food.price),
-        setFoodimage(res.data.food.foodImage)
-  ])
-  .catch((error) => console.log(error));
-},[])
 
 const onclickplus = ()=>{
   if(quantity>=10)
-  addfoodOrder({...foodOrder,quantity:10,total:(price*10)})
+  {
+setQuantity(10),
+setTotal(price*10)
+}
   else
-  addfoodOrder({...foodOrder,quantity:quantity+1,total:(price*(quantity+1))})
+  {
+  setQuantity(quantity+1),
+  setTotal(price*(quantity+1))}
 }
 
 const onclickminus = ()=>{
   if(quantity<=1)
-  addfoodOrder({...foodOrder,quantity:1,total:(price*1)})
+ { 
+    setQuantity(1),
+  setTotal(price*1)}
   else
-  addfoodOrder({...foodOrder,quantity:quantity-1,total:(price*(quantity-1))})
+  {
+    setQuantity(quantity-1),
+    setTotal(price*(quantity-1))}
 }
 
 const returnhome = ()=>{
@@ -127,6 +168,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
       </Alert>
     
     <div className="" hidden={show}>
+
 
 <div class="card-sl" style={{backgroundColor:"hsl(0,0%,75%,0.5)",paddingTop:"20px",paddingBottom:"20px",paddingInlineStart:"50px",paddingInlineEnd:"50px"}}>    
   <div class="card-body" >
@@ -185,7 +227,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
  <div class="input-group-prepend">
    <span class="input-group-text" id="basic-addon1" style={{backgroundColor:'hsl(0,0%,0%,0.3)',color:"white"}}>Food</span>
  </div>
- <input type="text" className="form-control" name="foodname"  value={foodname}   onChange={onInputChange} disabled />
+ <input type="text" className="form-control" name="foodname"  value={foodname}    disabled />
 </div></div>
 
 <div class="col" >
@@ -193,7 +235,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
  <div class="input-group-prepend">
    <span class="input-group-text" id="basic-addon1" style={{backgroundColor:'hsl(0,0%,0%,0.3)',color:"white"}}>Quantity</span>
  </div>
- <input type="text" className="form-control" style={{textAlign:"center"}} name="quantity" value={quantity} onChange={onInputChange} disabled   />
+ <input type="text" className="form-control" style={{textAlign:"center"}} name="quantity" value={quantity} disabled   />
 </div></div>
 
 <div class="col">
@@ -202,7 +244,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
    <span class="input-group-text" id="basic-addon1" style={{backgroundColor:'hsl(0,0%,0%,0.3)',color:"white"}}>Total Price</span>
  </div>
  
- <input type="text" className="form-control" name="total" value={total} onChange={onInputChange}  disabled  />
+ <input type="text" className="form-control" name="total" value={total}   disabled  />
 </div></div>
 
 </div>
@@ -220,7 +262,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
                    class="form-control form-control-lg"
                    value={name}
                    name="name" placeholder="Enter Your Name" required
-                   onChange={onInputChange} 
+                   onChange={(e) => setName(e.target.value)} 
                  />
                 <Form.Control.Feedback type="invalid">
              Please provide Your Name
@@ -241,7 +283,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
                    class="form-control form-control-lg"
                    name="address" placeholder="Enter your Address"
                    required ="required"
-                   onChange={onInputChange}
+                   onChange={(e) => setAddress(e.target.value)}
                    value={address}
                  /> 
                  <Form.Control.Feedback type="invalid">
@@ -265,14 +307,14 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
                     maxLength={10}
                     minLength={9}
                     value={phone}
-                    onChange={onInputChange}
+                    onChange={(e) => setPhone(e.target.value)}
                  /> 
                  <Form.Control.Feedback type="invalid">
              Please provide a phone number
            </Form.Control.Feedback></div>
               
            </div>
-
+            
 
            <div class="d-grid gap-2">
   <button type="submit"  class="btn btn-danger" >Order Now</button>
