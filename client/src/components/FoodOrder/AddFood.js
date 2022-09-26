@@ -69,7 +69,7 @@ else{
               <div class="row g-0">
                 <div class="col-md-4 d-none d-md-block">
                   <img
-                    src="https://play-lh.googleusercontent.com/TE976-Z50a72ynOmUwoyrbtw2zmEi3bfyWSKNNDfIkN80XV8j1mbhAudcgqzjFQ5YA"
+                    src="https://static.thenounproject.com/png/1092662-200.png"
                     alt="login form"
                     class="img-fluid" style={{borderTopLeftRadius: "1rem", borderBottomLeftRadius: "1rem", height:"584px"}}
                   />

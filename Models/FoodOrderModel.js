@@ -34,7 +34,7 @@ const foodOrderSchema = new mongoose.Schema ({
     },
     userid:{
         type:String,
-        required:false
+        required:true
     }
 });
 
