@@ -33,6 +33,7 @@ import AddReply from './components/Inquiry/AddReply';
 import AdminAllReply from './components/Inquiry/AdminAllReply'
 import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
+import MyInquiries from './components/Inquiry/MyInquiries';
 
 
 function App() {
@@ -84,6 +85,8 @@ console.log(window.location.pathname)
           <Route path="/adminallreply" element={<AdminAllReply/>} />
           <Route path="/editreply/:id" element={<EditReply/>} />
           <Route path="/inquiryreport" element={<InquiryReport/>} />
+          <Route path= "/myinq" element={<MyInquiries/>} />
+          
 
           
 

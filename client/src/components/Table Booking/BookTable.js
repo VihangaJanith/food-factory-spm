@@ -33,6 +33,7 @@ function BookTable() {
       .post("http://localhost:5000/register/view", abc)
       .then((res) => {
         setId(res.data.userId);
+        
         console.log(res.data.userId);
       })
       .catch((err) => {
@@ -47,6 +48,7 @@ function BookTable() {
       e.stopPropagation();
     } else {
       e.preventDefault();
+
       const booking = {
         name,
         tabletype: tname,
@@ -59,7 +61,7 @@ function BookTable() {
 
       if(booking.name.length < 4){
         alert("Enter Full Name")
-        return booking.name.setValidated(false);
+        return false;
       }
 
         else{
@@ -71,6 +73,7 @@ function BookTable() {
         .then((res) => {
           console.log(res.data);
           alert("Booking Added");
+          window.location.replace("/tablemenu");
         });
 
       }
@@ -90,6 +93,19 @@ function BookTable() {
     setPhone("");
   };
 
+
+
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate() + 0).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+};
+
+
+
+
   return (
     <div className="one">
       <div className="formw">
@@ -102,6 +118,23 @@ function BookTable() {
           onReset={reset}
           onSubmit={(e) => addBooking(e)}
         >
+           <div>
+            <label for="name">Table Type</label>
+            <input
+              type="text"
+              id="name"
+              className="form-control mb-3"
+              placeholder={tname}
+              value={tname}
+              disabled
+              
+             
+              
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid Name
+            </Form.Control.Feedback>
+          </div>
           <div>
             <label for="name">Name</label>
             <input
@@ -112,6 +145,7 @@ function BookTable() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid Name
@@ -128,6 +162,7 @@ function BookTable() {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
+              min={disablePastDate()}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid Date
@@ -155,7 +190,10 @@ function BookTable() {
             <input
               type="text"
               id="phone"
-              minLength="6"
+              
+              pattern="[0-9]{9,10}"
+                    maxLength={10}
+                    minLength={9}
               className="form-control mb-3"
               placeholder="Phone Number"
               value={phone}

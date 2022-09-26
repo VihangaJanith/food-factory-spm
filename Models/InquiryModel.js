@@ -28,6 +28,10 @@ const InquirySchema = new Schema ({
         type : String,
         default : "Our team will response to your inquiry soon"
     },
+    userid:{
+        type : String,
+        required : false
+    }
     
 }, {
     timestamps:true
