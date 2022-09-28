@@ -53,7 +53,7 @@ console.log(window.location.pathname)
 
         <Routes>
           
-          <Route path="/addtable" element={<AddTable/>} />
+          <Route path="/" element={<AddTable/>} />
           <Route path="/tablemenu" element={<TableMenu/>} />
           <Route path="/booktable/:name" element={<BookTable/>} />
           <Route path="/register" element={<Register/>} />
