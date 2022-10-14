@@ -86,6 +86,33 @@ router.post("/view", async(req, res) =>{
     }
 })
 
+router.get("/all-user", async (req,res)=>{
+    User.find().exec((err,users)=>{
+        if (err){
+            return res.status(400).json({
+                error:err
+            });
+        }
+        return res.status(200).json({
+            success:true,
+            users
+        });
+    });
+    
+})
+
+
+router.delete('/delete/:id',(req,res)=>{
+    User.findByIdAndRemove(req.params.id).exec((err,deletedUser)=>{
+        if(err) return res.status(400).json({
+          message:" Delete unsuccesful",err
+        });
+        return res.json({
+            message:" Delete succesful",deletedUser
+        });
+    });
+});
+
 router.put("/update", async(req, res) =>{
     try{
         const id = req.body.id
