@@ -8,7 +8,8 @@ router.post('/add', async (req, res) => {
         name : req.body.name,
         phone : req.body.phone,
         email : req.body.email,
-        inq : req.body.inq
+        inq : req.body.inq,
+        userid : req.body.userid
     }
     const newInquiry = new Inquiry(userinquiry)
     await newInquiry.save()
@@ -34,6 +35,19 @@ router.get("/:id", async(req, res) =>{
         const id = req.params.id
         const userinquiry = await Inquiry.findById(id)
         res.send(userinquiry)
+
+    }catch(err){
+        res.send(err)
+    }
+})
+
+
+router.get('/book/:userid', async(req, res) =>{
+    try{
+       
+        let booking = await Inquiry.find({ userid: req.params.userid })
+       
+        res.json(booking)
 
     }catch(err){
         res.send(err)
