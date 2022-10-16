@@ -35,6 +35,7 @@ import AdminAllReply from './components/Inquiry/AdminAllReply'
 import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
 import MyInquiries from './components/Inquiry/MyInquiries';
+import DriverReg from './components/User/driverReg';
 
 
 function App() {
@@ -73,7 +74,7 @@ console.log(window.location.pathname)
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
           <Route path="/edit" element={<Edit/>} />
-
+          <Route path="/regdriver" element={<DriverReg/>} />
           <Route path="/posts" element={<Posts/>} />
 
           <Route path="/food/edit/:id" element={<EditFood/>} />
