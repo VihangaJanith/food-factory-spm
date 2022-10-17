@@ -6,6 +6,7 @@ import TableMenu from './components/Table Booking/TableMenu';
 import BookTable from './components/Table Booking/BookTable';
 import Register from './components/User/Register';
 import Login from './components/User/login';
+import AllUser from './components/User/allUser';
 import Profile from './components/User/profile';
 import AllTable from './components/Table Booking/AllTable';
 import AllBookings from './components/Table Booking/AllBookings';
@@ -34,6 +35,7 @@ import AdminAllReply from './components/Inquiry/AdminAllReply'
 import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
 import MyInquiries from './components/Inquiry/MyInquiries';
+import DriverReg from './components/User/driverReg';
 
 
 
@@ -63,6 +65,7 @@ console.log(window.location.pathname)
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/alluser" element={<AllUser/>} />
           <Route path="/alltable" element={<AllTable/>} />
           <Route path="/allbookings" element={<AllBookings/>} />
           <Route path="/edittable/:id" element={<EditTable/>} />
@@ -80,7 +83,7 @@ console.log(window.location.pathname)
           
           
           <Route path="/edit" element={<Edit/>} />
-
+          <Route path="/regdriver" element={<DriverReg/>} />
           <Route path="/posts" element={<Posts/>} />
 
           <Route path="/food/edit/:id" element={<EditFood/>} />
