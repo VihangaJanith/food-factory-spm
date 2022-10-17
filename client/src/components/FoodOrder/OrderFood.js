@@ -6,6 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 //import Select from "react-select";
 import './food.css'
+import AddLocation from "./AddLocation";
 const Restration = (props)=>{
 
    const { id } = useParams();
@@ -146,6 +147,10 @@ const onclickminus = ()=>{
 
 const returnhome = ()=>{
   window.location.replace("/")
+}
+
+const addlocation = ()=>{
+  window.location.replace("/food/addlocation")
 }
 
 
@@ -314,6 +319,24 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
            </Form.Control.Feedback></div>
               
            </div>
+
+           <div class="d-flex flex-row align-items-center mb-4">
+        
+        <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane me-2"></i>Add Location</label>  
+           
+
+         <div class="card" style={{width: "150rem"}}>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+
+    <AddLocation/>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+            
+         </div>
+
             
 
            <div class="d-grid gap-2">

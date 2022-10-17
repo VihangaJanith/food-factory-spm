@@ -20,7 +20,7 @@ import AllOrders from './components/FoodOrder/AllOrders';
 import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
 import EditFood from './components/FoodOrder/EditFood';
 import MyFoodOrders from './components/FoodOrder/MyFoodOrders';
-
+import AddLocation from './components/FoodOrder/AddLocation';
 
 import Posts from './components/Table Booking/ex.js';
 import Edit from './components/User/update';
@@ -34,6 +34,9 @@ import AdminAllReply from './components/Inquiry/AdminAllReply'
 import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
 import MyInquiries from './components/Inquiry/MyInquiries';
+
+
+
 
 
 function App() {
@@ -54,7 +57,7 @@ console.log(window.location.pathname)
 
         <Routes>
           
-          <Route path="/" element={<AddTable/>} />
+          <Route path="/addtble" element={<AddTable/>} />
           <Route path="/tablemenu" element={<TableMenu/>} />
           <Route path="/booktable/:name" element={<BookTable/>} />
           <Route path="/register" element={<Register/>} />
@@ -70,6 +73,12 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
+
+         
+          <Route path="/food/addlocation" element={<AddLocation/>} />
+    
+          
+          
           <Route path="/edit" element={<Edit/>} />
 
           <Route path="/posts" element={<Posts/>} />

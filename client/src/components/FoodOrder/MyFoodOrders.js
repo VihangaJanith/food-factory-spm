@@ -160,7 +160,7 @@ function MyFoodOrders() {
     </div>
 </div>
 
-        </div> :  <div><p>You have not booked tables. Please Book a table from the menu</p></div> }
+        </div> :  <div><p>You have not Order Food. Please Order Foods from the menu</p></div> }
 
 
 
