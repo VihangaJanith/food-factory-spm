@@ -41,23 +41,23 @@ function Register() {
             password,
             confirmPass
         }
-        if(newUser.name.length < 4){
-            alert("Enter Full Name")
-            return false;
-        }
-        if(newUser.mobile !=10){
-          alert("Enter Valid Mobile")
-          return false;
-      }
+      //   if(newUser.name.length < 4){
+      //       alert("Enter Full Name")
+      //       return false;
+      //   }
+      //   if(newUser.mobile !=10){
+      //     alert("Enter Valid Mobile")
+      //     return false;
+      // }
         if (newUser.email == '' || newUser.email.includes('@'  && '.com') == false ){
 
-            alert("Enter Valid email Address")
-            return false;
-        }
+             alert("Enter Valid email Address")
+      return false;
+       }
         if (newUser.password != newUser.confirmPass){
             alert("Password not matched")
-            return false;
-        }
+             return false;
+        }   
     
         axios.post('http://localhost:5000/register/reg', newUser).then((res)=>{
             console.log(res.data)
@@ -116,9 +116,10 @@ function Register() {
             className="form-control mb-3"
             placeholder="+94719885481"
             value={mobile}
+            pattern="[0-9]{9,10}"
             onChange={(e)=> setMobile(e.target.value)} 
             required />
-            <Form.Control.Feedback type="invalid" className=" mb-2">
+            <Form.Control.Feedback type="tel" className=" mb-2">
               Please provide Mobile No
             </Form.Control.Feedback>
 </div>
