@@ -45,6 +45,10 @@ function Register() {
             alert("Enter Full Name")
             return false;
         }
+        if(newUser.mobile !=10){
+          alert("Enter Valid Mobile")
+          return false;
+      }
         if (newUser.email == '' || newUser.email.includes('@'  && '.com') == false ){
 
             alert("Enter Valid email Address")
