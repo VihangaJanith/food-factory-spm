@@ -69,91 +69,93 @@ import {
       originRef.current.value = ''
       destiantionRef.current.value = ''
     }
+    const back = ()=>{
+      window.location.replace ("/")
+    }
   
     return (
         <ChakraProvider theme={theme}>
       <Flex
-        position='relative'
-        flexDirection='column'
-        alignItems='center'
-        h='100vh'
-        w='100vw'
-      >
-        <Box position='absolute' left={0} top={0} h='100%' w='100%'>
-          {/* Google Map Box */}
-          <GoogleMap
-            center={center}
-            zoom={15}
-            mapContainerStyle={{ width: '100%', height: '100%' }}
-            options={{
-              zoomControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
-            }}
-            onLoad={map => setMap(map)}
-          >
-            <Marker position={center} />
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </GoogleMap>
-        </Box>
-        <Box
-          p={4}
-          borderRadius='lg'
-          m={4}
-          bgColor='white'
-          shadow='base'
-          minW='container.md'
-          zIndex='1'
+      position='relative'
+      flexDirection='column'
+      alignItems='center'
+      h='100vh'
+      w='100vw'
+    >
+      <Box position='absolute' left={0} top={0} h='100%' w='100%'>
+        {/* Google Map Box */}
+        <GoogleMap
+          center={center}
+          zoom={15}
+          mapContainerStyle={{ width: '100%', height: '100%' }}
+          options={{
+            zoomControl: false,
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+          }}
+          onLoad={map => setMap(map)}
         >
-          <HStack spacing={2} justifyContent='space-between'>
-            <Box flexGrow={1}>
-              <Autocomplete>
-                <Input type='text' placeholder='Origin' ref={originRef} value='SLIIT Main Building, Malabe, Sri Lanka' disabled/>
-              </Autocomplete>
-            </Box>
-            <Box flexGrow={1}>
-              <Autocomplete>
-                <Input
-                  type='text'
-                  placeholder='Destination'
-                  ref={destiantionRef}
-                />
-              </Autocomplete>
-            </Box>
-            
-  
-            <ButtonGroup>
-              <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-                Calculate Route
-              </Button>
-              <IconButton
-                aria-label='center back'
-                icon={<FaTimes />}
-                onClick={clearRoute}
+          <Marker position={center} />
+          {directionsResponse && (
+            <DirectionsRenderer directions={directionsResponse} />
+          )}
+        </GoogleMap>
+      </Box>
+      <Box
+        p={4}
+        borderRadius='lg'
+        m={4}
+        bgColor='white'
+        shadow='base'
+        minW='container.md'
+        zIndex='1'
+      >
+        <HStack spacing={2} justifyContent='space-between'>
+          <Box flexGrow={1}>
+            <Autocomplete>
+              <Input type='text' placeholder='Origin' ref={originRef}  value="SLIIT, New Kandy Road, Malabe, Sri Lanka" disabled/>
+            </Autocomplete>
+          </Box>
+          <Box flexGrow={1}>
+            <Autocomplete>
+              <Input
+                type='text'
+                placeholder='Destination'
+                ref={destiantionRef}
               />
-            </ButtonGroup>
-          </HStack>
-          <HStack spacing={4} mt={4} justifyContent='space-between'>
-            <Text>Distance: {distance} </Text>
-            <Text>Duration: {duration} </Text>
+            </Autocomplete>
+          </Box>
+
+          <ButtonGroup>
+            <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
+              Calculate Route
+            </Button>
             <IconButton
               aria-label='center back'
-              icon={<FaLocationArrow />}
-              isRound
-              onClick={() => {
-                map.panTo(center)
-                map.setZoom(15)
-              }}
+              icon={<FaTimes />}
+              onClick={clearRoute}
             />
+          </ButtonGroup>
+        </HStack>
+        <HStack spacing={4} mt={4} justifyContent='space-between'>
+          <Text>Distance: {distance} </Text>
+          <Text>Duration: {duration} </Text>
+          <IconButton
+            aria-label='center back'
+            icon={<FaLocationArrow />}
+            isRound
+            onClick={() => {
+              map.panTo(center)
+              map.setZoom(15)
+            }}
+          />
+        </HStack>
+        <button class="form-control form-control-lg btn btn-success" onClick={back}>Done</button>
+      </Box>
 
-
-          </HStack>
-          <button style={{marginLeft:"100px"}}>Done</button>
-        </Box>
-      </Flex>
+      
+    </Flex>
 
       </ChakraProvider>
     )

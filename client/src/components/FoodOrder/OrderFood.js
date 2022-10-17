@@ -108,11 +108,10 @@ const Restration = (props)=>{
 
     await axios.post("http://localhost:5000/foodorder/add", foodOrder)
     .then((res) => {
-      setShow(true);
-      setTimeout(() =>{
-        setShow(false);
-      window.location.href = "/";
-      }, 4000)
+      alert("Enter your Delivery Location")
+      window.location.href = "/food/addlocation";
+
+      
      
     });
     
@@ -150,29 +149,15 @@ const returnhome = ()=>{
 }
 
 const addlocation = ()=>{
-  window.location.replace("/food/addlocation")
+  window.open ("/food/addlocation")
 }
 
 
     return (
       <div style={{minHeight:"300px"}}>
-<Alert style={{marginTop:"20px",marginLeft:"40px",marginRight:"40px"}} show={show} variant="success" aid="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        
-        <Alert.Heading>Hey {name} !!!  Your order has been successfully completed!</Alert.Heading>
-        <p>
-        <br/>
 
-You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><br/> Thank You
-        </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button type="submit" onClick={returnhome} variant="outline-success">
-            Close
-          </Button>
-        </div>
-      </Alert>
     
-    <div className="" hidden={show}>
+    <div className="" >
 
 
 <div class="card-sl" style={{backgroundColor:"hsl(0,0%,75%,0.5)",paddingTop:"20px",paddingBottom:"20px",paddingInlineStart:"50px",paddingInlineEnd:"50px"}}>    
@@ -320,22 +305,7 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
               
            </div>
 
-           <div class="d-flex flex-row align-items-center mb-4">
-        
-        <label class="form-label fw-bold" style={{width:"300px"}}> <i class="fas fa-plane me-2"></i>Add Location</label>  
            
-
-         <div class="card" style={{width: "150rem"}}>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-
-    <AddLocation/>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-            
-         </div>
 
             
 
