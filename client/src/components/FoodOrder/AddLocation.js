@@ -70,6 +70,7 @@ import {
       destiantionRef.current.value = ''
     }
     const back = ()=>{
+      alert("Order Successfull")
       window.location.replace ("/")
     }
   

@@ -41,7 +41,7 @@ class AdminHome extends Component {
                             <button
                               class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                               type="submit"
-                              style={{width:"350px"}}
+                              style={{width:"450px"}}
                             >
                               <a
                                 href="/alluser"
@@ -72,7 +72,7 @@ class AdminHome extends Component {
                             <button
                               class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                               type="submit"
-                              style={{width:"350px"}}
+                              style={{width:"450px"}}
                             >
                               <a
                                 href="/food/allfood"
@@ -107,7 +107,7 @@ class AdminHome extends Component {
                             <button
                               class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                               type="submit"
-                              style={{width:"350px"}}
+                              style={{width:"450px"}}
                             >
                               <a
                                 href="/allbookings"
@@ -133,7 +133,7 @@ class AdminHome extends Component {
                             <button
                               class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                               type="submit"
-                              style={{width:"350px"}}
+                              style={{width:"450px"}}
                             >
                               <a
                                 href="/allinquiry"
@@ -152,11 +152,62 @@ class AdminHome extends Component {
                             </button>
                           </div>
 
+                        </div>
 
 
 
 
 
+
+                        <div class="d-flex flex-row align-items-center mb-5">
+                          <div class="form-outline mb-2 ">
+                            <button
+                              class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
+                              type="submit"
+                              style={{width:"450px"}}
+                            >
+                              <a
+                                href="/food/allorders"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                {" "}
+                                <i
+                                  class="fas fa-utensils me-2"
+                                  aria-hidden="true"
+                                  
+                                ></i>
+                                 Food Delivery Management
+                              </a>
+                            </button>
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                          <div class="form-outline mb-2 ">
+                            <button
+                              class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
+                              type="submit"
+                              style={{width:"450px"}}
+                            >
+                              <a
+                                href="/allinquiry"
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
+                              >
+                                {" "}
+                                <i
+                                  class="fas fa-utensils me-2"
+                                  aria-hidden="true"
+                                ></i>
+                                Table Booking Management
+                              </a>
+                            </button>
+                          </div>
 
                         </div>
                         <hr class="my-1" />

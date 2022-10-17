@@ -108,7 +108,7 @@ const Restration = (props)=>{
 
     await axios.post("http://localhost:5000/foodorder/add", foodOrder)
     .then((res) => {
-      alert("Enter your Delivery Location")
+      alert("Order Successfull....! Enter your Delivery Location")
       window.location.href = "/food/addlocation";
 
       

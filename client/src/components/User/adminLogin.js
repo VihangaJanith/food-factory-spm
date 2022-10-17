@@ -13,7 +13,7 @@ export default function Admin  (){
 
             if(adminuser =="admin" && adminpass =="admin"){
                 
-                window.location.href="/adminhome" ;
+                window.location.href="/admin-home" ;
  
             }else{
                 alert("login Fail")
@@ -30,18 +30,46 @@ export default function Admin  (){
             <div className="info">
            
          
-            <form  className="form12">
-                <br></br>
-            <h2 className="h222">System admin Login</h2>
 
-            <input className="inputabc" type="text" placeholder="Username" id="user1" ></input>
-            <input className="inputabc" type="password" placeholder="Password"id="pass1"></input>
-            <a className="btn btn-danger a123"  onClick={myFunction}>
-                                <i className ="fas fa-login"></i>&nbsp;Login
-                            </a>
-           
+
+
+
+            <div class="card container mt-5" style={{width: "38rem"}}>
+  <div class="card-body">
+    <h2 className="h222 card-title mb-5" style={{color:"black",fontWeight:"bold",textAlign:"center"}}>System admin Login</h2>
+    <form  className="form12">
+             
             
+  
+             
+    
+                          
+  <div class="mb-5">
+    <label for="exampleInputEmail1" class="form-label ">Enter Your User Name</label>
+    <input type="text" class="form-control" placeholder="Username" id="user1" />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Enter Your Password</label>
+    <input type="password" class="form-control" placeholder="Password" id="pass1"/>
+  </div>
+  <a className="form-control form-control-lg btn btn-success a123"  onClick={myFunction}>
+                                <i className ="fas fa-login"></i>&nbsp;Log In
+                            </a>
+
+
+
+
+
+
+
+
+
+
+
             </form>
+  </div>
+</div>
+           
 
          
             
