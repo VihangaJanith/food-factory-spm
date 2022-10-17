@@ -37,7 +37,7 @@ import InquiryReport from './components/Inquiry/InquiryReport';
 import MyInquiries from './components/Inquiry/MyInquiries';
 import DriverReg from './components/User/driverReg';
 import AdminHome from './components/AdminHome';
-
+import Admin from './components/User/adminLogin';
 
 
 
@@ -77,7 +77,7 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
-
+          <Route path="/admin" element={<Admin/>} />
          
           <Route path="/food/addlocation" element={<AddLocation/>} />
     

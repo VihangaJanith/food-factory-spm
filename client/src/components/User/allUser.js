@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap';
-
+import ReactToPrint from "react-to-print";
+import{ useRef } from 'react';
 function AllUser() {
     const [tables, setTables] = useState();
     const [searchkey, setsearchkey] = useState('');
-  
+    const componentRef = useRef();
 
 
 
@@ -46,8 +47,8 @@ function AllUser() {
         const response = await axios.get(
             'http://localhost:5000/register/all-user'
           );
-        const  filteredPackages = response.data.filter((tables) =>
-          tables.name.toLowerCase().includes(searchkey)
+        const  filteredPackages = response.data.users.filter((users) =>
+            users.name.toLowerCase().includes(searchkey)
           );
           if (filteredPackages.length > 0) {
             setTables(filteredPackages);
@@ -58,9 +59,7 @@ function AllUser() {
 
 
     }
-
-
-
+    
   return (
     <div  className="container">
 
@@ -69,13 +68,17 @@ function AllUser() {
 
     <div  className="row mb-2">
 
-<input type="text" className="form-control col-4 mt-1"  onChange={(e) => {setsearchkey(e.target.value)} }
+ <input type="text" className="form-control col-4 mt-1"  onChange={(e) => {setsearchkey(e.target.value)} }
                  placeholder="Search User"   style={{ width: "200px", borderRadius: "10px"}} />
                 <div className="col-6 col-md-4">
                  <button className="btn btn-secondary mt-1" style={{marginLeft: "1px"}}
                  onClick={()=>filterPackages(searchkey)}>Search</button>
-                
+                <ReactToPrint
+                 trigger={() => <button className="btn btn-danger ms-3">Print this out!</button>}
+                 content={() => componentRef.current}
+               />
                  </div>
+                 
                  {/* <div className="col-6 col-md-4">
                     <a href={"/addtable"}>
                     <button className="btn btn-success mt-1" >Add Table</button></a>
@@ -87,7 +90,7 @@ function AllUser() {
     </div>
 
 
-    <Table striped bordered hover >
+    <Table striped bordered hover  ref={componentRef}>
                 <thead>
                     <tr>
                         <th>#</th>
