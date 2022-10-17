@@ -12,11 +12,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
-<<<<<<< HEAD
     "framer-motion": "^6.5.1",
-=======
     "mdb-react-ui-kit": "^4.2.0",
->>>>>>> 11d8a6f2d308657bf795cfc2248d1f696e9c6c33
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",

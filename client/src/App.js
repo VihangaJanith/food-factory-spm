@@ -36,6 +36,7 @@ import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
 import MyInquiries from './components/Inquiry/MyInquiries';
 import DriverReg from './components/User/driverReg';
+import AdminHome from './components/AdminHome';
 
 
 
@@ -98,6 +99,8 @@ console.log(window.location.pathname)
           <Route path="/editreply/:id" element={<EditReply/>} />
           <Route path="/inquiryreport" element={<InquiryReport/>} />
           <Route path= "/myinq" element={<MyInquiries/>} />
+
+          <Route path="/admin-home" element={<AdminHome/>} />
           
 
           
