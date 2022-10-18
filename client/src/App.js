@@ -6,6 +6,7 @@ import TableMenu from './components/Table Booking/TableMenu';
 import BookTable from './components/Table Booking/BookTable';
 import Register from './components/User/Register';
 import Login from './components/User/login';
+import AllUser from './components/User/allUser';
 import Profile from './components/User/profile';
 import AllTable from './components/Table Booking/AllTable';
 import AllBookings from './components/Table Booking/AllBookings';
@@ -20,7 +21,7 @@ import AllOrders from './components/FoodOrder/AllOrders';
 import AllFoodAdmin from './components/FoodOrder/AllFoodsAdmin';
 import EditFood from './components/FoodOrder/EditFood';
 import MyFoodOrders from './components/FoodOrder/MyFoodOrders';
-
+import AddLocation from './components/FoodOrder/AddLocation';
 
 import Posts from './components/Table Booking/ex.js';
 import Edit from './components/User/update';
@@ -33,6 +34,12 @@ import AddReply from './components/Inquiry/AddReply';
 import AdminAllReply from './components/Inquiry/AdminAllReply'
 import EditReply from './components/Inquiry/EditReply';
 import InquiryReport from './components/Inquiry/InquiryReport';
+import MyInquiries from './components/Inquiry/MyInquiries';
+import DriverReg from './components/User/driverReg';
+import AdminHome from './components/AdminHome';
+import Admin from './components/User/adminLogin';
+
+
 
 
 function App() {
@@ -53,12 +60,13 @@ console.log(window.location.pathname)
 
         <Routes>
           
-          <Route path="/addtable" element={<AddTable/>} />
+          <Route path="/addtble" element={<AddTable/>} />
           <Route path="/tablemenu" element={<TableMenu/>} />
           <Route path="/booktable/:name" element={<BookTable/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/alluser" element={<AllUser/>} />
           <Route path="/alltable" element={<AllTable/>} />
           <Route path="/allbookings" element={<AllBookings/>} />
           <Route path="/edittable/:id" element={<EditTable/>} />
@@ -69,8 +77,14 @@ console.log(window.location.pathname)
           <Route path="/food/add" element={<AddFood/>} />
           <Route path="/food/allorders" element={<AllOrders/>} />
           <Route path="/food/allfood" element={<AllFoodAdmin/>} />
+          <Route path="/admin" element={<Admin/>} />
+         
+          <Route path="/food/addlocation" element={<AddLocation/>} />
+    
+          
+          
           <Route path="/edit" element={<Edit/>} />
-
+          <Route path="/regdriver" element={<DriverReg/>} />
           <Route path="/posts" element={<Posts/>} />
 
           <Route path="/food/edit/:id" element={<EditFood/>} />
@@ -84,6 +98,10 @@ console.log(window.location.pathname)
           <Route path="/adminallreply" element={<AdminAllReply/>} />
           <Route path="/editreply/:id" element={<EditReply/>} />
           <Route path="/inquiryreport" element={<InquiryReport/>} />
+          <Route path= "/myinq" element={<MyInquiries/>} />
+
+          <Route path="/admin-home" element={<AdminHome/>} />
+          
 
           
 

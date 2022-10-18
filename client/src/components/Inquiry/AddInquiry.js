@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Form } from "react-bootstrap";
 
@@ -7,8 +7,36 @@ function AddInquiry() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [inq, setInq] = useState('');
+    const [userid ,setId] = useState('');
 
     const [validated, setValidated] = useState(false);
+
+
+
+    if (localStorage.getItem("token") == null) {
+        alert("Please Login");
+        window.location.replace("/login");
+      }
+    
+      useEffect((e) => {
+        //Runs on every render
+    
+        const len = localStorage.getItem("token").length;
+        let result = localStorage.getItem("token").slice(1, len - 1);
+        const abc = { token: result };
+    
+        axios
+          .post("http://localhost:5000/register/view", abc)
+          .then((res) => {
+            setId(res.data.userId);
+            
+            console.log(res.data.userId);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      });
+
 
     const addInquiry = async (e) => {
         const form = e.currentTarget;
@@ -23,12 +51,13 @@ function AddInquiry() {
                 phone,
                 email,
                 inq,
+                userid
             }
 
             await axios.post('http://localhost:5000/inquiry/add', newUserInquiry).then((res) => {
                 alert("Inquiry Added Successfully")
                 console.log(res.data)
-                window.location.href = '/allinquiryuser'
+                // window.location.href = '/allinquiryuser'
             })
         }
         setValidated(true);
@@ -123,6 +152,10 @@ function AddInquiry() {
                         <div className="col">
                             <br />
                             <a href={"/allinquiryuser"} class="btn btn-outline-warning" style={{ width: "200px" }}><i className="fas fa-comments"></i>&nbsp; All Inquiries</a>
+                        </div>
+                        <div className="col">
+                            <br />
+                            <a href={"/myinq"} class="btn btn-outline-warning" style={{ width: "200px" }}><i className="fas fa-comments"></i>&nbsp; My inquiries</a>
                         </div>
                     </div>
                 </Form>

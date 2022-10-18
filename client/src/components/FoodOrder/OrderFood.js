@@ -6,6 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 //import Select from "react-select";
 import './food.css'
+import AddLocation from "./AddLocation";
 const Restration = (props)=>{
 
    const { id } = useParams();
@@ -107,11 +108,10 @@ const Restration = (props)=>{
 
     await axios.post("http://localhost:5000/foodorder/add", foodOrder)
     .then((res) => {
-      setShow(true);
-      setTimeout(() =>{
-        setShow(false);
-      window.location.href = "/";
-      }, 4000)
+      alert("Order Successfull....! Enter your Delivery Location")
+      window.location.href = "/food/addlocation";
+
+      
      
     });
     
@@ -124,23 +124,23 @@ const Restration = (props)=>{
 const onclickplus = ()=>{
   if(quantity>=10)
   {
-setQuantity(10),
+setQuantity(10)
 setTotal(price*10)
 }
   else
   {
-  setQuantity(quantity+1),
+  setQuantity(quantity+1)
   setTotal(price*(quantity+1))}
 }
 
 const onclickminus = ()=>{
   if(quantity<=1)
  { 
-    setQuantity(1),
+    setQuantity(1)
   setTotal(price*1)}
   else
   {
-    setQuantity(quantity-1),
+    setQuantity(quantity-1)
     setTotal(price*(quantity-1))}
 }
 
@@ -148,26 +148,16 @@ const returnhome = ()=>{
   window.location.replace("/")
 }
 
+const addlocation = ()=>{
+  window.open ("/food/addlocation")
+}
+
 
     return (
       <div style={{minHeight:"300px"}}>
-<Alert style={{marginTop:"20px",marginLeft:"40px",marginRight:"40px"}} show={show} variant="success" aid="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        
-        <Alert.Heading>Hey {name} !!!  Your order has been successfully completed!</Alert.Heading>
-        <p>
-        <br/>
 
-You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><br/> Thank You
-        </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button type="submit" onClick={returnhome} variant="outline-success">
-            Close
-          </Button>
-        </div>
-      </Alert>
     
-    <div className="" hidden={show}>
+    <div className="" >
 
 
 <div class="card-sl" style={{backgroundColor:"hsl(0,0%,75%,0.5)",paddingTop:"20px",paddingBottom:"20px",paddingInlineStart:"50px",paddingInlineEnd:"50px"}}>    
@@ -314,6 +304,9 @@ You have ordered <b>{foodname}</b> . The Order Delivery to you with in 1h.<br/><
            </Form.Control.Feedback></div>
               
            </div>
+
+           
+
             
 
            <div class="d-grid gap-2">

@@ -10,7 +10,7 @@ const FoodRoutes = require('./Routes/FoodRoutes')
 const FoodOrderRoutes = require('./Routes/FoodOrderRoutes')
 const inquiryRoute = require('./Routes/InquiryRoutes')
 const inquiryAdminRoute = require('./Routes/InquiryAdminRoutes')
-
+const driver = require('./Routes/DriverRoute')
 const app = express();
 
 app.use(express.json())
@@ -21,6 +21,7 @@ app.use(cors());
 app.use('/table', tableRoute)
 app.use('/tablebooking', tableBookingRoute)
 app.use('/register', user)
+app.use('/driver', driver)
 app.use('/food', FoodRoutes)
 app.use('/foodorder', FoodOrderRoutes)
 app.use('/inquiry', inquiryRoute)

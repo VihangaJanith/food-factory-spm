@@ -139,6 +139,7 @@ const onMouseLeave= (e)=> {
   <a href="/profile">Profile</a>
   <a href="/myorders">My Food Orders</a>
   <a href="/mybookings">My Table Bookings</a>
+  <a href="/myinq">My Inquiries</a>
   
   <a href="#" onClick={logout}>Logout</a>
   </div>

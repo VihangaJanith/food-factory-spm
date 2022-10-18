@@ -21,9 +21,9 @@ function Footer() {
           <div className="col">
             <h4>Address</h4>
             <h6 className="list-unstyled">
-              <li>SLIIT Malabe Campus</li>
+              <li>The  Food Factory</li>
               <li> New Kandy Rd,</li>
-              <li> Malabe 10115</li>
+              <li> Malabe</li>
               <li>Sri Lanka</li>
               
             </h6>
@@ -32,8 +32,8 @@ function Footer() {
           <div className="col abcs">
             <h4>Services</h4>
             <h6 className="list-unstyled">
-              <li ><a href="https://courseweb.sliit.lk/" >CourseWeb</a> </li>
-              <li><a href=" https://www.sliit.lk" >  SLIIT</a></li>
+              <li ><a href="https://courseweb.sliit.lk/" >Food Factory</a></li> 
+              <li><a href=" https://www.sliit.lk" >  Shop</a></li>
               </h6>
 
               
@@ -93,7 +93,7 @@ function Footer() {
               <i class="fab fa-instagram" style={{ color: "#adadad" }}></i>
             </a>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {new Date().getFullYear()} SLIIT | All rights
+            {new Date().getFullYear()} Food Factory | All rights
             reserved | Terms Of Service | Privacy
           </p>
    

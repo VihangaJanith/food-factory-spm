@@ -104,7 +104,7 @@ function MyBookings() {
             {bookings.map((booking,index) => (
                 <div>
                     <Card className="mb-2" key={booking._id} border="primary" style={{ width: '35rem' }}>
-        <Card.Header>{index+1}  <strong>{booking.tabletype}</strong> Table</Card.Header>
+        <Card.Header>{index+1}.  <strong>{booking.tabletype}</strong> Table</Card.Header>
         <Card.Body>
           <Card.Title>Reservation Date : {booking.date}</Card.Title>
           <Card.Title>Reservation Time : {booking.time}</Card.Title>
